@@ -83,4 +83,21 @@ public class ServersRest {
         return new ResponseEntity<>(servers, HttpStatus.OK);
     }
 
+    @RequestMapping("/findall")
+    public String findAll(){
+        String result = "<html>";
+
+        for(Servers cust : serverService.getAll()){
+            result += "<div>" + cust.toString() + "</div>";
+        }
+
+        return result + "</html>";
+    }
+
+    @RequestMapping("/findbyid")
+    public String findById(@RequestParam("id") long id){
+        String result = "";
+        result = serverService.getById(id).toString();
+        return result;
+    }
 }

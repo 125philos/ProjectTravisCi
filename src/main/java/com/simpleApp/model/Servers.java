@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 @Table(name = "server_table")
 @Getter
 @Setter
-@ToString
 public class Servers extends BaseComponent {
     @Column(name = "name_server")
     private String nameServer;
@@ -23,4 +22,9 @@ public class Servers extends BaseComponent {
 
     @Column(name = "description")
     private String description;
+
+    @Override
+    public String toString() {
+        return "Servers [nameServer=" + nameServer + ", idApplication=" + idApplication + ", description=" + description + "]";
+    }
 }
