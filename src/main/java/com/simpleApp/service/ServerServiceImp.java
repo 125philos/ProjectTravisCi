@@ -30,7 +30,7 @@ public class ServerServiceImp implements ServerService  {
 
     @Override
     public void delete(Long id) {
-        //log.info("IN ServersServiceImpl delete {}", id);
+        logger.info("IN ServersServiceImpl delete {}", id);
         serverRepository.delete(id);
     }
 
