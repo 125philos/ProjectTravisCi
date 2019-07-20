@@ -12,7 +12,8 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "server_table")
 @Getter
-@Setter@ToString
+@Setter
+@ToString
 public class Servers extends BaseComponent {
     @Column(name = "name_server")
     private String nameServer;
