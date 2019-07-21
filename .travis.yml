@@ -1,6 +1,4 @@
 language: java
-services:
-  - mysql
 
 script:
-  - mvn clean package org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=mihanloko_projectForTeamDev
+  - "mvn clean package"
