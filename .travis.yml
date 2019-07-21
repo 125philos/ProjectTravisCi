@@ -1,4 +1,10 @@
 language: java
 
+addons:
+  sonarcloud:
+    organization: "125philos"
+    token:
+      secure: "PsuXnssaVBy28/b8FA6owf7tgsCHIk2XMcZ5hk4qtNB8vMhtsaft8s4eFjn48EShHIP//hT5MP6JIspnQbGiRiM317YbcgnRsltc0xVSPW/urRitq1LBoseOYreJd4DNSEbwrAJlchkG3tPw+9jIryxsAwO4PYu6Dl4cvYlX35t4JdbgneqbzCii6XqPVkYbN0KJtHELKTtizUvg8fy78xaz4E2N09BNdgET/LnuCXz76xQjXEGPZpTAcWQdlQbpOhbqZZlloHpebzGMua3fIezyKWvmsc6MiiyWaB19turbdPXkC7u3Ldn2w9mMl3O7oGOiR0gTGiMQ073L5ahp77rDeLEsV0EJgauFwclclrGZ+xSFGNfFKarrmdyPzm5+GXNLIGKh2krrVfcveNsUbh1iuOsqIaehBmlgsjO5+0UTh87ksPN7Q4L4eFUF7KfDU2IxG/v9bDmaf4jZzOymCzdZoJLacMRBnANFJVPScUW4RD40Yb9jMhAj3lr1I6VpKCs/cbNj/9uKTuKdYHb7g7sGghUnMZjo9aav0UwXToJGYTgWZ7Wf9BNurRMR/CexivgetM2/ZTtzd+qT+AGT7BTWl3VYRz05PbijJRQ2LditcuYtkq4FqQV/iSqJ+i/hLcIFUsQTf3PcLuneMcuq6bBesOm7nBQ0fTMvQx5QnBg="
+
 script:
-  - "mvn clean package"
+  - "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=125philos_ProjectTravisCi"
