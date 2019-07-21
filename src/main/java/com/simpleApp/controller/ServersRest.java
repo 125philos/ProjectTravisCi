@@ -60,7 +60,7 @@ public class ServersRest {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Servers> deleteCustomer(@PathVariable("id") Long id) {
+    public ResponseEntity<Servers> deleteServers(@PathVariable("id") Long id) {
         Servers servers = this.serverService.getById(id);
 
         if (servers == null) {

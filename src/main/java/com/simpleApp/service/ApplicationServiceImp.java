@@ -22,6 +22,18 @@ public class ApplicationServiceImp implements ApplicationService {
     }
 
     @Override
+    public void save(Applications applications) {
+        logger.info("IN ApplicationServiceImp save {}", applications);
+        applicationRepository.save(applications);
+    }
+
+    @Override
+    public void delete(Long id) {
+        logger.info("IN ApplicationServiceImp delete {}", id);
+        applicationRepository.delete(id);
+    }
+
+    @Override
     public List<Applications> getAll() {
         logger.info("IN ApplicationServiceImp getAll");
         return applicationRepository.findAll();
