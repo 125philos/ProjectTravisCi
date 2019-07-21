@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "application_table")
 @Getter
 @Setter
-public class Application extends BaseComponent {
+public class Applications extends BaseComponent {
     @Column(name = "name_application")
     private String nameApplication;
 
@@ -23,6 +23,6 @@ public class Application extends BaseComponent {
 
     @Override
     public String toString() {
-        return "Application [nameApplication=" + nameApplication + ", previousApplication=" + previousApplication + ", nextApplication=" + nextApplication + "]";
+        return "Applications [nameApplication=" + nameApplication + ", previousApplication=" + previousApplication + ", nextApplication=" + nextApplication + "]";
     }
 }
