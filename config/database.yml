@@ -1,0 +1,5 @@
+test:
+  adapter: postgres
+  database: servers
+  username: postgres
+  encoding: utf8
