@@ -1,25 +1,62 @@
 package com.simpleApp.controller;
 
 import com.simpleApp.model.Servers;
+import com.simpleApp.model.ServersForm;
 import com.simpleApp.service.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.util.List;
 
-@RestController
-@RequestMapping("/api/servers")
+@Controller
 public class ServersRest {
     @Autowired
     private ServerService serverService;
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping("/")
+    public String redirToList(){
+        return "redirect:/server/list";
+    }
+    @RequestMapping({"/server/list", "/server"})
+    public String listServers(Model model){
+        model.addAttribute("servers", serverService.getAll());
+        return "server/list";
+    }
+
+    @RequestMapping("/server/show/{id}")
+    public String getServer(@PathVariable String id, Model model){
+        model.addAttribute("server", serverService.getById(Long.valueOf(id)));
+        return "server/show";
+    }
+
+    @RequestMapping("/server/new")
+    public String newServer(Model model){
+        model.addAttribute("serverForm", new ServersForm());
+        return "server/serverform";
+    }
+
+    @RequestMapping(value = "/server", method = RequestMethod.POST)
+    public String saveOrUpdateServer(@Valid ServersForm serverForm, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return "server/serverform";
+        }
+
+        Servers savedServers = serverService.saveOrUpdateServersForm(serverForm);
+
+        return "redirect:/server/show/" + savedServers.getId();
+    }
+
+    @RequestMapping("/server/delete/{id}")
+    public String delete(@PathVariable String id){
+        serverService.delete(Long.valueOf(id));
+        return "redirect:/server/list";
+    }
+
+    /*@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Servers> getServers(@PathVariable("id") Long serversId) {
         if (serversId == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -99,5 +136,5 @@ public class ServersRest {
         String result = "";
         result = serverService.getById(id).toString();
         return result;
-    }
+    }*/
 }
