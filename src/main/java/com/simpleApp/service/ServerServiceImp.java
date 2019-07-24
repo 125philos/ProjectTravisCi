@@ -53,7 +53,7 @@ public class ServerServiceImp implements ServerService  {
 
     @Override
     public List<Servers> getAll() {
-        logger.info("IN ServersServiceImpl getAll");
+        //logger.info("IN ServersServiceImpl getAll");
         //return serverRepository.findAll();
         List<Servers> servers = new ArrayList<>();
         serverRepository.findAll().forEach(servers::add);
