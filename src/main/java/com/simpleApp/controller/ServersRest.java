@@ -30,7 +30,7 @@ public class ServersRest {
 
     @RequestMapping("/")
     public String redirToList(){
-        return "redirect:/server/list";
+        return "redirect:/server/show";
     }
 
     @RequestMapping({"/server/list", "/server"})
@@ -39,9 +39,8 @@ public class ServersRest {
         return "server/list";
     }
 
-    @RequestMapping("/server/show/{id}")
-    public String getServer(@PathVariable String id, Model model){
-        model.addAttribute("server", serverService.getById(Long.valueOf(id)));
+    @RequestMapping("/server/show")
+    public String getShow(){
         return "server/show";
     }
 
@@ -69,7 +68,8 @@ public class ServersRest {
 
         Servers savedServers = serverService.saveOrUpdateServersForm(serverForm);
 
-        return "redirect:/server/show/" + savedServers.getId();
+        return "redirect:/server/list";
+        //return "redirect:/server/show/" + savedServers.getId();
     }
 
     @RequestMapping("/server/delete/{id}")
