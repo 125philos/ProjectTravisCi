@@ -1,6 +1,11 @@
 ### IntelliJ IDEA ###
 .idea
 target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
 *.iws
 *.iml
 *.ipr
