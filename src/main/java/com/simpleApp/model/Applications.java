@@ -9,6 +9,7 @@ public class Applications {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(name = "name_application")
     private String nameApplication;
 
