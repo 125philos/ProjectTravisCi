@@ -1,11 +1,16 @@
 package com.simpleApp.repository;
 
 import com.simpleApp.model.Applications;
-import com.simpleApp.service.ApplicationService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 public class ApplicationRepositoryTest {
 
     private static final String NAME_APPLICATION = "Application 1";
@@ -13,9 +18,12 @@ public class ApplicationRepositoryTest {
     private static final String NEXT_APPLICATION = "Application 11";
 
     @Autowired
-    private ApplicationService applicationService;
-    @Autowired
     private ApplicationRepository applicationRepository;
+
+    @Before
+    public void setUp() throws Exception {
+
+    }
 
     @Test
     public void applicationsTest() {
@@ -30,8 +38,9 @@ public class ApplicationRepositoryTest {
 
         // Compare
         Assert.assertNotNull(applications.getId());
-        Applications newApplications = applicationRepository.findOne(applications.getId());
-        Assert.assertEquals((Long) 1L, newApplications.getId());
+        //Applications newApplications = applicationRepository.findOne(applications.getId());
+        Applications newApplications = applicationRepository.findById(applications.getId()).orElse(null);
+        Assert.assertEquals((Long) 6L, newApplications.getId());
         Assert.assertEquals(NAME_APPLICATION, newApplications.getNameApplication());
         Assert.assertEquals(PREV_APPLICATION, newApplications.getPreviousApplication());
         Assert.assertEquals(NEXT_APPLICATION, newApplications.getNextApplication());

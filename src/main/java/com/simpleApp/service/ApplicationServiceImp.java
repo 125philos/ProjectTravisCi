@@ -27,7 +27,8 @@ public class ApplicationServiceImp implements ApplicationService {
     @Override
     public Applications getById(Long id) {
         logger.info("IN ApplicationServiceImp getById {}", id);
-        return applicationRepository.findOne(id);
+        //return applicationRepository.findOne(id);
+        return applicationRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -47,7 +48,8 @@ public class ApplicationServiceImp implements ApplicationService {
     @Override
     public void delete(Long id) {
         logger.info("IN ApplicationServiceImp delete {}", id);
-        applicationRepository.delete(id);
+        //applicationRepository.delete(id);
+        applicationRepository.deleteById(id);
     }
 
     @Override

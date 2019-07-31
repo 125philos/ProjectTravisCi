@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringJpaMySqlApplication.class)
-public class SpringBootApplicationTests {
+@SpringBootTest
+public class SpringJpaPostgresApplicationTests {
     @Test
     public void contextLoads() {
     }
