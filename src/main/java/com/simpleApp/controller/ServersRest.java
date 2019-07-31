@@ -55,7 +55,7 @@ public class ServersRest {
 
     @RequestMapping("/server/listApplication")
     public String listApplications(Model model){
-        model.addAttribute("applications", applicationService.getAll());
+        model.addAttribute("app", applicationService.getAll());
         return "server/listApplication";
     }
 
@@ -107,8 +107,7 @@ public class ServersRest {
         //return "redirect:/server/show/" + savedServers.getId();
     }
 
-
-    @RequestMapping(value = "/application", method = RequestMethod.POST)
+    @RequestMapping(value = "/appl", method = RequestMethod.POST)
     public String saveOrUpdateApplication(@Valid ApplicationsForm applicationsForm, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){

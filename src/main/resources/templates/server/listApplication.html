@@ -39,7 +39,7 @@
         </nav>
     </div>
 
-    <div th:if="${not #lists.isEmpty(applications)}">
+    <div th:if="${not #lists.isEmpty(app)}">
         <h2>APPLICATIONS</h2>
         <table class="table table-striped">
             <tr>
@@ -50,13 +50,13 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
-            <tr th:each="application : ${applications}">
-                <td th:text="${application.id}"></td>
-                <td th:text="${application.nameApplication}"></td>
-                <td th:text="${application.previousApplication}"></td>
-                <td th:text="${application.nextApplication}"></td>
-                <td><a th:href="${'/server/editApplication/' + application.id}">Edit</a> </td>
-                <td><a th:href="${'/server/deleteApplication/' + application.id}">Delete</a> </td>
+            <tr th:each="apps : ${app}">
+                <td th:text="${apps.id}"></td>
+                <td th:text="${apps.nameApplication}"></td>
+                <td th:text="${apps.previousApplication}"></td>
+                <td th:text="${apps.nextApplication}"></td>
+                <td><a th:href="${'/server/editApplication/' + apps.id}">Edit</a> </td>
+                <td><a th:href="${'/server/deleteApplication/' + apps.id}">Delete</a> </td>
             </tr>
         </table>
     </div>

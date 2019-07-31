@@ -16,7 +16,7 @@
 
     <h2>Application Details</h2>
     <div>
-        <form class="form-horizontal" th:object="${applicationForm}" th:action="@{/application}" method="post">
+        <form class="form-horizontal" th:object="${applicationForm}" th:action="@{/appl}" method="post">
 
             <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
                 <p th:text="#{form.hasErrors}">Error Message</p>
