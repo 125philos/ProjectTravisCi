@@ -27,7 +27,7 @@ public class ApplicationRepositoryTest {
 
     @Test
     public void applicationsTest() {
-        // Given information table Server
+        // Given information table Application
         Applications applications = new Applications();
         applications.setNameApplication(NAME_APPLICATION);
         applications.setPreviousApplication(PREV_APPLICATION);
