@@ -67,7 +67,7 @@ public class ServersRest {
         return "server/show";
     }
 
-    @RequestMapping("/graph")
+    @RequestMapping("/server/graph")
     public String getGraph(Model model){
 
 //        Gson gson = new Gson();
@@ -109,7 +109,7 @@ public class ServersRest {
         list.add(3L);
         list.add(4L);
         model.addAttribute("json_obj", builder.getOrder(list));
-        return "/graph";
+        return "/server/graph";
     }
 
     @RequestMapping("server/edit/{id}")
